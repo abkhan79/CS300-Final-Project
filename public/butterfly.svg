@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Butterfly</title>
+  <desc id="desc">A pastel pink, purple, and blue butterfly illustration.</desc>
+  <defs>
+    <linearGradient id="wingLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff8bd1"/>
+      <stop offset="50%" stop-color="#8ad8ff"/>
+      <stop offset="100%" stop-color="#6a5cff"/>
+    </linearGradient>
+    <linearGradient id="wingRight" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffb5e0"/>
+      <stop offset="55%" stop-color="#95e1ff"/>
+      <stop offset="100%" stop-color="#845cff"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="512" height="512" fill="none"/>
+
+  <g transform="translate(256 256)">
+    <ellipse cx="-90" cy="-70" rx="98" ry="130" fill="url(#wingLeft)" opacity="0.95" transform="rotate(-28)"/>
+    <ellipse cx="92" cy="-72" rx="98" ry="130" fill="url(#wingRight)" opacity="0.95" transform="rotate(28)"/>
+
+    <ellipse cx="-92" cy="92" rx="82" ry="118" fill="url(#wingLeft)" opacity="0.9" transform="rotate(26)"/>
+    <ellipse cx="92" cy="92" rx="82" ry="118" fill="url(#wingRight)" opacity="0.9" transform="rotate(-26)"/>
+
+    <ellipse cx="0" cy="0" rx="20" ry="110" fill="#2f2340"/>
+    <ellipse cx="0" cy="-18" rx="14" ry="28" fill="#1f1830"/>
+    <circle cx="0" cy="-126" r="12" fill="#2f2340"/>
+
+    <g fill="#fff" opacity="0.88">
+      <circle cx="-120" cy="-140" r="8"/>
+      <circle cx="-92" cy="-108" r="5"/>
+      <circle cx="-58" cy="-78" r="4"/>
+      <circle cx="118" cy="-142" r="8"/>
+      <circle cx="92" cy="-108" r="5"/>
+      <circle cx="58" cy="-78" r="4"/>
+      <circle cx="-106" cy="106" r="6"/>
+      <circle cx="102" cy="108" r="6"/>
+    </g>
+
+    <path d="M -176 -60 C -132 -98, -82 -96, -40 -54" fill="none" stroke="#fff" stroke-opacity="0.45" stroke-width="4" stroke-linecap="round"/>
+    <path d="M 176 -60 C 132 -98, 82 -96, 40 -54" fill="none" stroke="#fff" stroke-opacity="0.45" stroke-width="4" stroke-linecap="round"/>
+
+    <g opacity="0.4" fill="#ffffff">
+      <circle cx="-154" cy="-170" r="3"/>
+      <circle cx="-130" cy="-140" r="2.5"/>
+      <circle cx="135" cy="-160" r="3"/>
+      <circle cx="150" cy="-128" r="2.5"/>
+      <circle cx="-144" cy="154" r="2.5"/>
+      <circle cx="146" cy="152" r="2.5"/>
+    </g>
+
+    <circle cx="0" cy="0" r="165" fill="url(#glow)" opacity="0.24"/>
+  </g>
+</svg>
