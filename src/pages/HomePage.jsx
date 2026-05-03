@@ -15,7 +15,7 @@ function HomePage() {
     <section className="page fade-in">
       <div className="page-heading">
         <h1>Welcome, {currentUser.name}!</h1>
-        <p className="home-intro" style={{ color: '#000' }}>
+        <p className="home-intro">
           Start polls, host games, and have fun with friends and family.
         </p>
       </div>

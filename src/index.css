@@ -1,6 +1,8 @@
 :root {
-  --bg: #ff69b4;
-  --bg-gradient: linear-gradient(135deg, #ff69b4 0%, #ba55d3 25%, #87ceeb 50%, #90ee90 75%, #ffd700 100%);
+  --bg: #0b1220;
+  --bg-gradient: radial-gradient(circle at 10% 20%, rgba(255,148,114,0.06) 0%, transparent 18%),
+    radial-gradient(circle at 90% 80%, rgba(139,92,246,0.05) 0%, transparent 22%),
+    linear-gradient(135deg, #071029 0%, #0f1724 35%, #2b1350 100%);
   --surface: #ffffff;
   --surface-muted: #f0f4ff;
   --text: #2d3748;
@@ -120,11 +122,16 @@ a {
   margin: 0;
   font-size: clamp(1.6rem, 4vw, 2.2rem);
   letter-spacing: -0.03em;
+  color: var(--surface);
 }
 
 .page-heading p {
   margin-top: 6px;
   color: var(--muted);
+}
+
+.home-intro {
+  color: rgba(255,255,255,0.92);
 }
 
 .chat-thread-heading {
@@ -144,13 +151,19 @@ a {
   border-radius: 24px;
   padding: 24px;
   background: var(--surface);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow:
+    0 14px 34px rgba(15, 23, 42, 0.16),
+    0 0 0 1px rgba(255, 255, 255, 0.6) inset,
+    0 10px 24px rgba(255, 20, 147, 0.08);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  box-shadow:
+    0 20px 48px rgba(15, 23, 42, 0.22),
+    0 0 0 1px rgba(255, 255, 255, 0.7) inset,
+    0 14px 30px rgba(255, 20, 147, 0.12);
 }
 
 .stats-grid {
@@ -188,6 +201,21 @@ a {
   color: #000;
   font-size: 0.85rem;
   font-weight: 600;
+}
+
+/* High-contrast stat text when displayed in the gradient stat cards */
+.stats-grid .stat-label {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.stats-grid .stat-value {
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+.stats-grid .stat-detail,
+.stats-grid .stat-detail--dark {
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .home-intro {
@@ -404,6 +432,9 @@ a {
 .room-card {
   display: grid;
   gap: 10px;
+  box-shadow:
+    0 14px 34px rgba(15, 23, 42, 0.14),
+    0 8px 22px rgba(186, 85, 211, 0.1);
 }
 
 .contact-card {
@@ -411,6 +442,9 @@ a {
   justify-content: space-between;
   align-items: center;
   gap: 12px;
+  box-shadow:
+    0 14px 34px rgba(15, 23, 42, 0.14),
+    0 8px 22px rgba(255, 20, 147, 0.1);
 }
 
 .contact-card h3 {
@@ -594,6 +628,7 @@ a {
   border: 1px solid var(--border);
   padding: 14px;
   background: var(--surface);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12), 0 6px 16px rgba(255, 20, 147, 0.06);
 }
 
 .error-banner {

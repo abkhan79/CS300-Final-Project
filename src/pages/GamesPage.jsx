@@ -246,7 +246,7 @@ function GamesPage() {
     <section className="page fade-in">
       <div className="page-heading">
         <h1>Games & Polls</h1>
-        <p style={{ color: '#fff' }}>Create and vote on polls for game nights and decisions.</p>
+        <p>Create and vote on polls for game nights and decisions.</p>
       </div>
 
       <div style={{ display: 'grid', gap: '12px' }}>
@@ -314,7 +314,7 @@ function GamesPage() {
                   width: '100%',
                   padding: '10px 12px',
                   borderRadius: '12px',
-                  border: '2px solid #e0e0e0',
+                    border: '2px solid #d7dde8',
                   fontSize: '0.95rem',
                 }}
               />
@@ -339,7 +339,7 @@ function GamesPage() {
                   width: '100%',
                   padding: '10px 12px',
                   borderRadius: '12px',
-                  border: '2px solid #e0e0e0',
+                    border: '2px solid #d7dde8',
                   fontSize: '0.95rem',
                 }}
               />
@@ -369,7 +369,7 @@ function GamesPage() {
                       flex: 1,
                       padding: '10px 12px',
                       borderRadius: '12px',
-                      border: '2px solid #e0e0e0',
+                      border: '2px solid #d7dde8',
                       fontSize: '0.95rem',
                     }}
                   />
@@ -379,8 +379,8 @@ function GamesPage() {
                       onClick={() => setPollOptions(pollOptions.filter((_, i) => i !== index))}
                       style={{
                         padding: '8px 12px',
-                        background: '#ffcccc',
-                        color: '#c00',
+                        background: '#f3f4f6',
+                        color: '#4b5563',
                         border: 'none',
                         borderRadius: '8px',
                         cursor: 'pointer',
@@ -399,8 +399,8 @@ function GamesPage() {
                 type="button"
                 style={{
                   padding: '8px 12px',
-                  background: '#e8f5e9',
-                  color: '#2e7d32',
+                  background: '#f3f4f6',
+                  color: '#4b5563',
                   border: 'none',
                   borderRadius: '8px',
                   cursor: 'pointer',
@@ -419,7 +419,7 @@ function GamesPage() {
               style={{
                 width: '100%',
                 padding: '12px',
-                background: 'linear-gradient(135deg, #ff1493 0%, #ff69b4 100%)',
+                background: 'linear-gradient(135deg, #8b9bb4 0%, #a5b4fc 100%)',
                 color: '#fff',
                 border: 'none',
                 borderRadius: '12px',
@@ -438,12 +438,22 @@ function GamesPage() {
         {filteredGames.length ? (
           filteredGames.map((game, index) => {
             const colors = [
-              { bg: 'linear-gradient(135deg, #90ee90 0%, #7cfc00 100%)', header: '#00aa00' },
-              { bg: 'linear-gradient(135deg, #87ceeb 0%, #00bfff 100%)', header: '#0099cc' },
-              { bg: 'linear-gradient(135deg, #ba55d3 0%, #9932cc 100%)', header: '#7722aa' },
-              { bg: 'linear-gradient(135deg, #ffd700 0%, #ffed4e 100%)', header: '#ff9900' },
+              { bg: 'linear-gradient(135deg, #f8fafc 0%, #eef2f7 100%)', header: '#6b7280' },
+              { bg: 'linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%)', header: '#64748b' },
+              { bg: 'linear-gradient(135deg, #f8fafc 0%, #f5f3ff 100%)', header: '#7c7f9a' },
+              { bg: 'linear-gradient(135deg, #f8fafc 0%, #fafafa 100%)', header: '#8b8b8b' },
             ]
             const colorScheme = colors[index % colors.length]
+            // compute this game's index among only polls so we can assign per-poll header gradients
+            const visiblePolls = filteredGames.filter((g) => g.type === 'poll')
+            const pollIndex = visiblePolls.findIndex((g) => g.id === game.id)
+
+            const pollHeaderGradients = [
+              'linear-gradient(90deg, #7c3aed 0%, #a78bfa 100%)', // lavender
+              'linear-gradient(90deg, #10b981 0%, #34d399 100%)', // mint
+              'linear-gradient(90deg, #fb7185 0%, #f97316 100%)', // coral -> orange
+              'linear-gradient(90deg, #38bdf8 0%, #60a5fa 100%)', // sky
+            ]
             const pollEndsAtMs = game.type === 'poll' ? getEffectivePollEndsAtMs(game) : NaN
             const hasPollTimer = Number.isFinite(pollEndsAtMs)
             const pollRemainingMs = hasPollTimer ? Math.max(0, pollEndsAtMs - pollNowMs) : 0
@@ -461,7 +471,16 @@ function GamesPage() {
                   marginBottom: 0,
                 }}
               >
-                <div style={{ background: colorScheme.header, padding: '16px 20px', color: '#fff' }}>
+                <div
+                  style={{
+                    background:
+                      game.type === 'poll' && pollIndex !== -1
+                        ? pollHeaderGradients[pollIndex % pollHeaderGradients.length]
+                        : colorScheme.header,
+                    padding: '16px 20px',
+                    color: '#fff',
+                  }}
+                >
                   <h3 style={{ margin: '0 0 4px', fontWeight: 800, fontSize: '1.1rem' }}>
                     {game.name}
                   </h3>
@@ -493,7 +512,7 @@ function GamesPage() {
                               letterSpacing: '0.02em',
                               padding: '3px 8px',
                               borderRadius: '999px',
-                              background: 'rgba(255,255,255,0.9)',
+                              background: 'rgba(255,255,255,0.78)',
                               color: '#374151',
                               textTransform: 'uppercase',
                             }}
@@ -507,8 +526,8 @@ function GamesPage() {
                             fontWeight: 800,
                             padding: '4px 10px',
                             borderRadius: '999px',
-                            background: isPollExpired ? '#fee2e2' : 'rgba(255,255,255,0.85)',
-                            color: isPollExpired ? '#b91c1c' : '#1f2937',
+                              background: isPollExpired ? '#f3f4f6' : 'rgba(255,255,255,0.78)',
+                              color: isPollExpired ? '#6b7280' : '#374151',
                           }}
                         >
                           {hasPollTimer
@@ -530,7 +549,7 @@ function GamesPage() {
                             : game.totalVotes > 0
                               ? (option.votes / game.totalVotes) * 100
                               : 0
-                        const optionColors = ['#ff4081', '#00bcd4', '#9c27b0', '#ff9800']
+                        const optionColors = ['#7c3aed', '#a78bfa', '#c4b5fd', '#e9d5ff']
                         const optColor = optionColors[optIndex % optionColors.length]
 
                         return (
@@ -598,23 +617,23 @@ function GamesPage() {
                                 {Math.round(percentage)}%
                               </span>
                             </div>
-                            <div
-                              style={{
-                                height: '10px',
-                                background: 'rgba(255, 255, 255, 0.3)',
-                                borderRadius: '8px',
-                                overflow: 'hidden',
-                              }}
-                            >
                               <div
                                 style={{
-                                  height: '100%',
-                                  background: optColor,
-                                  width: `${percentage}%`,
-                                  transition: 'width 0.3s ease',
+                                  height: '10px',
+                                  background: '#f3e8ff',
+                                  borderRadius: '8px',
+                                  overflow: 'hidden',
                                 }}
-                              />
-                            </div>
+                              >
+                                <div
+                                  style={{
+                                    height: '100%',
+                                    background: optColor,
+                                    width: `${percentage}%`,
+                                    transition: 'width 0.3s ease',
+                                  }}
+                                />
+                              </div>
                           </div>
                         )
                       })}
