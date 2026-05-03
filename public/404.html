@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecting...</title>
+    <script>
+      (function () {
+        var basePath = '/CS300-Final-Project'
+        var path = window.location.pathname
+        var redirectPath = '/'
+
+        if (path.indexOf(basePath + '/') === 0) {
+          redirectPath = path.slice(basePath.length)
+        } else if (path === basePath) {
+          redirectPath = '/'
+        }
+
+        sessionStorage.setItem('spa-redirect', redirectPath)
+        window.location.replace(basePath + '/')
+      })()
+    </script>
+  </head>
+  <body>
+    <p>Redirecting…</p>
+  </body>
+</html>
