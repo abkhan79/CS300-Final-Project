@@ -2,6 +2,6 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  base: '/cs300-final-project/',
+  base: '/cs300-react-test/',
   plugins: [react()],
 })
