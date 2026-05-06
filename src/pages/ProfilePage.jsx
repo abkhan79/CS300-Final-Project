@@ -37,7 +37,7 @@ function ProfilePage() {
               }}
             >
               <img
-                src="/butterfly.svg"
+                src={import.meta.env.BASE_URL + 'butterfly.svg'}
                 alt="Profile"
                 style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }}
               />
